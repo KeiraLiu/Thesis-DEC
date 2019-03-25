@@ -1,0 +1,149 @@
+"","ISO-3 code","Country","Land Tenure Insecurity","Efficiency of Land Tenure Policies","LG"
+"1","AFG","Afghanistan","3.5","1.5",2.5
+"2","ZAF","South Africa","1.5","2.5",2
+"3","ALB","Albania","2","2.5",2.25
+"4","DEU","Germany","4","2",3
+"5","DZA","Algeria","1.5","2",1.75
+"6","AGO","Angola","1.25","1.5",1.375
+"7","SAU","Saudi Arabia","1.5","0.5",1
+"8","ARG","Argentina","1.5","3",2.25
+"9","ARM","Armenia","3.25","1",2.125
+"10","AUS","Australia","3.5","3",3.25
+"11","AUT","Austria","3.5","-",3.5
+"12","AZE","Azerbaijan","1.25","1",1.125
+"13","BHR","Bahrain","3.5","1.5",2.5
+"14","BGD","Bangladesh","1.5","2",1.75
+"15","BLR","Belarus","2","2",2
+"16","BEL","Belgium","2.75","3",2.875
+"17","BEN","Benin","1.25","1",1.125
+"18","MMR","Myanmar","0.75","2.5",1.625
+"19","BOL","Bolivia","2","3",2.5
+"20","BIH","Bosnia and Herzegovina","3.5","1.5",2.5
+"21","BRA","Brazil","1","2.5",1.75
+"22","BRN","Brunei","3.75","1.5",2.625
+"23","BGR","Bulgaria","2.75","2.5",2.625
+"24","BFA","Burkina Faso","1.25","2",1.625
+"25","BDI","Burundi","1","0",0.5
+"26","KHM","Cambodia","1.75","1.5",1.625
+"27","CMR","Cameroon","1","1.5",1.25
+"28","CAN","Canada","4","3.5",3.75
+"29","CAF","Central African Republic","1.25","1.5",1.375
+"30","KM","Comoros","1.25","1.5",1.375
+"31","CHL","Chile","1.25","2",1.625
+"32","CHN","China","1","1.5",1.25
+"33","COL","Colombia","1.5","2",1.75
+"34","COG","Congo, Rep.","1.5","2.5",2
+"35","KOR","Korea, Rep.","3.25","-",3.25
+"36","CRI","Costa Rica","2.5","2",2.25
+"37","CIV","Cote d'Ivoire","0.75","1.5",1.125
+"38","HRV","Croatia","1.75","1",1.375
+"39","CUB","Cuba","1","1",1
+"40","CYP","Cyprus","2.75","2",2.375
+"41","DNK","Denmark","3.25","1.5",2.375
+"42","DOM","Dominican Republic","1.75","1",1.375
+"43","ECU","Ecuador","1.25","2",1.625
+"44","EGY","Egypt, Arab Rep.","2.5","1.5",2
+"45","ARE","United Arab Emirates","1.25","1",1.125
+"46","ER","Eritrea","1","0",0.5
+"47","ESP","Spain","2.5","-",2.5
+"48","EST","Estonia","4","2",3
+"49","USA","United States","4","2.5",3.25
+"50","ETH","Ethiopia","0.25","3",1.625
+"51","FIN","Finland","4","-",4
+"52","FRA","France","3.75","2",2.875
+"53","GAB","Gabon","2","0.5",1.25
+"54","GEO","Georgia","2.75","2",2.375
+"55","GHA","Ghana","1.25","2",1.625
+"56","GRC","Greece","2.25","1",1.625
+"57","GTM","Guatemala","1.5","1.5",1.5
+"58","GIN","Guinea","1.25","0.5",0.875
+"59","HTI","Haiti","1.75","-",1.75
+"60","HND","Honduras","2.25","2",2.125
+"61","HKG","Hong Kong","3","3",3
+"62","HUN","Hungary","1.75","1.5",1.625
+"63","ISL","Iceland","3","-",3
+"64","IND","India","1","1.5",1.25
+"65","IDN","Indonesia","1","0.5",0.75
+"66","IRN","Iran, Islamic Rep.","2.5","2",2.25
+"67","IRQ","Iraq","3","2",2.5
+"68","IRL","Ireland","2","1.5",1.75
+"69","ISR","Israel","3.25","2",2.625
+"70","ITA","Italy","4","2",3
+"71","JAM","Jamaica","3.25","2",2.625
+"72","JPN","Japan","4","-",4
+"73","JOR","Jordan","2.5","1.5",2
+"74","KAZ","Kazakhstan","2.75","1",1.875
+"75","KEN","Kenya","0.75","1.5",1.125
+"76","KWT","Kuwait","1.25","2",1.625
+"77","LAO","Lao PDR","1","1",1
+"78","LVA","Latvia","3.5","0",1.75
+"79","LBN","Lebanon","-","2",2
+"80","LBY","Libya","1.25","1",1.125
+"81","LTU","Lithuania","4","-",4
+"82","LUX","Luxembourg","3","-",3
+"83","MKD","Macedonia","2.75","2.5",2.625
+"84","MDG","Madagascar","1","1",1
+"85","MYS","Malaysia","2","1.5",1.75
+"86","MLI","Mali","0.75","1",0.875
+"87","MLT","Malta","2.5","-",2.5
+"88","MAR","Morocco","1.5","1.5",1.5
+"89","MRT","Mauritania","0.75","1",0.875
+"90","MUS","Mauritius","3","2",2.5
+"91","MEX","Mexico","1.25","2",1.625
+"92","MDA","Moldova","2","2",2
+"93","MNG","Mongolia","1","2.5",1.75
+"94","MOZ","Mozambique","0.75","2.5",1.625
+"95","NAM","Namibia","1.75","2",1.875
+"96","NPL","Nepal","1.5","1.5",1.5
+"97","NZL","New Zealand","4","2",3
+"98","NIC","Nicaragua","1","2",1.5
+"99","NER","Niger","1.75","2",1.875
+"100","NGA","Nigeria","1.25","2",1.625
+"101","NOR","Norway","3.5","4",3.75
+"102","OMN","Oman","2.5","2.5",2.5
+"103","UGA","Uganda","0.75","2",1.375
+"104","UZB","Uzbekistan","1.75","1.5",1.625
+"105","PAK","Pakistan","2.5","2.5",2.5
+"106","PAN","Panama","2.5","3",2.75
+"107","PRY","Paraguay","1.25","1",1.125
+"108","NLD","Netherlands","4","-",4
+"109","PER","Peru","1.5","2",1.75
+"110","PHL","Philippines","1.5","1.5",1.5
+"111","POL","Poland","2","2",2
+"112","PRT","Portugal","3.25","2",2.625
+"113","QAT","Qatar","2","0.5",1.25
+"114","ROU","Romania","3.5","1",2.25
+"115","GBR","United Kingdom","3.75","-",3.75
+"116","RUS","Russian Federation","2","2.5",2.25
+"117","RWA","Rwanda","2.5","1",1.75
+"118","SLV","El Salvador","2.25","2",2.125
+"119","SEN","Senegal","2.75","1",1.875
+"120","SRB","Serbia","2.5","1.5",2
+"121","SGP","Singapore","2.75","4",3.375
+"122","SVK","Slovak Republic","3.5","2.5",3
+"123","SVN","Slovenia","4","3",3.5
+"124","SOM","Somalia","1.25","0",0.625
+"125","SDN","Sudan","1.5","3",2.25
+"126","SSD","South Sudan","1","0",0.5
+"127","LKA","Sri Lanka","1.75","2",1.875
+"128","SWE","Sweden","3.25","2",2.625
+"129","CHE","Switzerland","3","3.5",3.25
+"130","TJK","Tajikistan","2","1",1.5
+"131","TWN","Taiwan","2","2.5",2.25
+"132","TZA","Tanzania","1","2.5",1.75
+"133","TCD","Chad","1.75","1",1.375
+"134","CZE","Czech Republic","2.5","1.5",2
+"135","THA","Thailand","3","3",3
+"136","TGO","Togo","1.5","0.5",1
+"137","TUN","Tunisia","1.25","-",1.25
+"138","TUR","Turkey","0.5","1.5",1
+"139","TKM","Turkmenistan","2.25","1",1.625
+"140","UKR","Ukraine","1.75","1.5",1.625
+"141","URY","Uruguay","2.25","3",2.625
+"142","VEN","Venezuela, RB","1","2.5",1.75
+"143","VNM","Vietnam","0.5","0.5",0.5
+"144","ZWE","Zimbabwe","1","1",1
+"145",NA,NA,NA,NA,NA
+"146",NA,NA,NA,NA,NA
+"147","Land tenure insecurity: 0: Very high land tenure insecurity; 4 very low land tenure insecurity",NA,NA,NA,NA
+"148","Efficiency of land tenure policies 0: no polic; 4: efficient policy",NA,NA,NA,NA
