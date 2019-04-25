@@ -50,3 +50,9 @@ all <- all[order(all$Var1),]
 colnames(all) <- c("Country", "Deals", "Size","Year")
 # store the data
 write.csv(all,"all")
+
+k = NULL
+>  for( i in countries) {
++      b <- land_all[land_all$Area == i,]
++      k <- rbind(k,data.frame(b))
++  }
