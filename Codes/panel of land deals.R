@@ -50,9 +50,14 @@ all <- all[order(all$Var1),]
 colnames(all) <- c("Country", "Deals", "Size","Year")
 # store the data
 write.csv(all,"all")
-
+# adding avalible land 
 k = NULL
 >  for( i in countries) {
-+      b <- land_all[land_all$Area == i,]
-+      k <- rbind(k,data.frame(b))
-+  }
+      b <- land_all[land_all$Area == i,]
+      k <- rbind(k,data.frame(b))
+  }
+land_all <- cbind(land$Area,land$Y2000)
+land_all <- as.data.frame(land_all) # because avaliable land is vary stable over years, thus, we choose static variable 
+# weights 
+weight <- table(all$Country)
+
