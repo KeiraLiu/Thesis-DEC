@@ -1,0 +1,215 @@
+----------------------------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  C:\Users\chansen1\Dropbox\JEPHighDimInf (1)\Examples\Institutions\JEPInstitutions.txt
+  log type:  text
+ opened on:  25 Feb 2014, 14:56:52
+
+. insheet using acemoglu_col_notext.txt ;
+(9 vars, 64 obs)
+
+. gen lnmort = log(mort) ;
+
+. gen lat2 = latitude^2 ;
+
+. gen lat3 = latitude^3 ;
+
+. gen lat_c08 = (latitude - .08)*(latitude - .08 > 0) ;
+
+. gen lat2_c08 = ((latitude - .08)*(latitude - .08 > 0))^2 ;
+
+. gen lat3_c08 = ((latitude - .08)*(latitude - .08 > 0))^3 ;
+
+. gen lat_c16 = (latitude - .16)*(latitude - .16 > 0) ;
+
+. gen lat2_c16 = ((latitude - .16)*(latitude - .16 > 0))^2 ;
+
+. gen lat3_c16 = ((latitude - .16)*(latitude - .16 > 0))^3 ;
+
+. gen lat_c24 = (latitude - .24)*(latitude - .24 > 0) ;
+
+. gen lat2_c24 = ((latitude - .24)*(latitude - .24 > 0))^2 ;
+
+. gen lat3_c24 = ((latitude - .24)*(latitude - .24 > 0))^3 ;
+
+. local controls = "africa asia namer samer latitude lat2 lat3 
+>         lat_c08 lat2_c08 lat3_c08 lat_c16 lat2_c16 lat3_c16 
+>         lat_c24 lat2_c24 lat3_c24" ;
+
+. * Baseline with just latitude ;
+. ivreg gdp (exprop = lnmort) latitude , robust first ;
+
+First-stage regressions
+-----------------------
+
+      Source |       SS       df       MS              Number of obs =      64
+-------------+------------------------------           F(  2,    61) =   13.17
+       Model |  40.9840173     2  20.4920086           Prob > F      =  0.0000
+    Residual |  94.9381041    61  1.55636236           R-squared     =  0.3015
+-------------+------------------------------           Adj R-squared =  0.2786
+       Total |  135.922121    63  2.15749399           Root MSE      =  1.2475
+
+------------------------------------------------------------------------------
+      exprop |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+    latitude |   1.817744   1.162004     1.56   0.123    -.5058259    4.141314
+      lnmort |  -.5371741   .1345884    -3.99   0.000    -.8063003   -.2680479
+       _cons |   8.665958   .7513477    11.53   0.000     7.163545    10.16837
+------------------------------------------------------------------------------
+
+
+Instrumental variables (2SLS) regression               Number of obs =      64
+                                                       F(  2,    61) =   13.81
+                                                       Prob > F      =  0.0000
+                                                       R-squared     =  0.1523
+                                                       Root MSE      =  .97656
+
+------------------------------------------------------------------------------
+             |               Robust
+         gdp |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+      exprop |   .9692383   .2128271     4.55   0.000     .5436642    1.394812
+    latitude |  -.6696106   .8987922    -0.75   0.459    -2.466857    1.127635
+       _cons |   1.874402   1.314638     1.43   0.159      -.75438    4.503184
+------------------------------------------------------------------------------
+Instrumented:  exprop
+Instruments:   latitude lnmort
+------------------------------------------------------------------------------
+
+.         * Include all controls ;
+. * ivreg gdp (exprop = lnmort) `controls' , robust first;
+. * Note:  The results from the all controls IV as above differ from MATLAB... ;
+. * Stata is probably doing some regularization internally since you get the ;
+. * same result if you do the IV "by hand" in Stata as you do in MATLAB.  This ;
+. * discrepancy may be worth further exploration. We'll go with MATLAB ;
+. * results for now. ;
+. quietly reg gdp `controls' ;
+
+. predict rgdp , resid ;
+
+. quietly reg exprop `controls' ;
+
+. predict rexp , resid ;
+
+. quietly reg lnmort `controls' ;
+
+. predict rmor , resid ;
+
+. ivreg rgdp (rexp = rmor) , robust first noconstant;
+
+First-stage regressions
+-----------------------
+
+      Source |       SS       df       MS              Number of obs =      64
+-------------+------------------------------           F(  1,    63) =    1.61
+       Model |  1.67679805     1  1.67679805           Prob > F      =  0.2088
+    Residual |  65.5099836    63  1.03984101           R-squared     =  0.0250
+-------------+------------------------------           Adj R-squared =  0.0095
+       Total |  67.1867817    64  1.04979346           Root MSE      =  1.0197
+
+------------------------------------------------------------------------------
+        rexp |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+        rmor |  -.2181759   .1718105    -1.27   0.209    -.5615118    .1251601
+------------------------------------------------------------------------------
+
+
+Instrumental variables (2SLS) regression               Number of obs =      64
+                                                       F(  1,    63) =    2.09
+                                                       Prob > F      =  0.1531
+                                                       R-squared     =       .
+                                                       Root MSE      =  .79846
+
+------------------------------------------------------------------------------
+             |               Robust
+        rgdp |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+        rexp |   .9890703    .684002     1.45   0.153    -.3777985    2.355939
+------------------------------------------------------------------------------
+Instrumented:  rexp
+Instruments:   rmor
+------------------------------------------------------------------------------
+
+. * Need to scale standard error by sqrt(63/(64-18)) to account for partialing ;
+. * out the controls to get things to line up with usual degrees of freedom ;
+. * correction done in Stata (and in MATLAB) for robust standard errors. ;
+. scalar se_all = .684*sqrt(63/(64-18)) ;
+
+. scalar list se_all ;
+    se_all =  .80047442
+
+. * Variable selection ;
+. * Outcome reduced form ;
+. lassoShooting gdp `controls' , lasiter(100) verbose(0) fdisplay(0) ;
+
+. local gdpSel `r(selected)' ;
+
+. di "`gdpSel'" ;
+africa
+
+. * Endogenous variable reduced form ;
+. lassoShooting exprop `controls' , lasiter(100) verbose(0) fdisplay(0) ;
+
+. local expSel `r(selected)' ;
+
+. di "`expSel'" ;
+
+
+. * Instrument reduced form ;
+. lassoShooting lnmort `controls' , lasiter(100) verbose(0) fdisplay(0) ;
+
+. local morSel `r(selected)' ;
+
+. di "`morSel'" ;
+africa
+
+. * Get union of selected instruments ;
+. local xTS : list gdpSel | expSel ;
+
+. local xTS : list xTS | morSel ;
+
+.  * Run final IV regression including selected controls ;
+. ivreg gdp (exprop = lnmort) `xTS' , robust first ;
+
+First-stage regressions
+-----------------------
+
+      Source |       SS       df       MS              Number of obs =      64
+-------------+------------------------------           F(  2,    61) =   11.87
+       Model |  38.0741315     2  19.0370657           Prob > F      =  0.0000
+    Residual |  97.8479899    61  1.60406541           R-squared     =  0.2801
+-------------+------------------------------           Adj R-squared =  0.2565
+       Total |  135.922121    63  2.15749399           Root MSE      =  1.2665
+
+------------------------------------------------------------------------------
+      exprop |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+      africa |  -.2981696    .398357    -0.75   0.457    -1.094734    .4983944
+      lnmort |  -.5429456   .1583078    -3.43   0.001    -.8595016   -.2263895
+       _cons |   9.164816   .6690722    13.70   0.000     7.826923    10.50271
+------------------------------------------------------------------------------
+
+
+Instrumental variables (2SLS) regression               Number of obs =      64
+                                                       F(  2,    61) =   25.68
+                                                       Prob > F      =  0.0000
+                                                       R-squared     =  0.4527
+                                                       Root MSE      =  .78469
+
+------------------------------------------------------------------------------
+             |               Robust
+         gdp |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+      exprop |   .7710393   .1970847     3.91   0.000     .3769441    1.165134
+      africa |  -.3963847    .295443    -1.34   0.185    -.9871595    .1943902
+       _cons |   3.205561   1.382827     2.32   0.024     .4404267    5.970694
+------------------------------------------------------------------------------
+Instrumented:  exprop
+Instruments:   africa lnmort
+------------------------------------------------------------------------------
+
+. log close ;
+      name:  <unnamed>
+       log:  C:\Users\chansen1\Dropbox\JEPHighDimInf (1)\Examples\Institutions\JEPInstitutions.txt
+  log type:  text
+ closed on:  25 Feb 2014, 14:56:53
+----------------------------------------------------------------------------------------------------
